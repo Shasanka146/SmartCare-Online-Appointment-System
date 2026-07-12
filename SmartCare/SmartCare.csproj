@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartCare.Business\SmartCare.Business.csproj" />
+    <ProjectReference Include="..\SmartCare.Repository\SmartCare.Repository.csproj" />
+    <ProjectReference Include="..\SmartCare.Shared\SmartCare.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

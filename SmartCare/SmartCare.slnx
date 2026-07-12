@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../SmartCare.Business/SmartCare.Business.csproj" Id="6da05dd5-2c00-466f-aa45-3232933fd35f" />
+  <Project Path="../SmartCare.Repository/SmartCare.Repository.csproj" Id="d02a3c6f-ecf1-4a23-8803-ea19be2df831" />
+  <Project Path="../SmartCare.Shared/SmartCare.Shared.csproj" Id="c19ff81d-f868-4e87-93c4-cab584cfcc7a" />
+  <Project Path="SmartCare.csproj" />
+</Solution>
