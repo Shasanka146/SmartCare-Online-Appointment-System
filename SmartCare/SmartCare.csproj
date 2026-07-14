@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SmartCare.Business\SmartCare.Business.csproj" />
-    <ProjectReference Include="..\SmartCare.Repository\SmartCare.Repository.csproj" />
     <ProjectReference Include="..\SmartCare.Shared\SmartCare.Shared.csproj" />
   </ItemGroup>
 

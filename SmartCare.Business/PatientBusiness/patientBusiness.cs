@@ -1,30 +1,27 @@
-﻿using SmartCare.Repository.PatientRepository;
-using SmartCare.Repository.Models;
+using SmartCare.Repository.PatientRepository;
 using SmartCare.Shared.PatientData;
 
+namespace SmartCare.Business.PatientBusiness;
 
-namespace SmartCare.Business.PatientBusiness
+public class patientBusiness : IpatientBusiness
 {
-    public class patientBusiness : IpatientBusiness
+    private readonly IPatientRepository _patientRepository;
+
+    public patientBusiness(IPatientRepository patientRepository) => _patientRepository = patientRepository;
+
+    public Task<bool> AddPatient(PatientDetails patient)
     {
-        public Task<bool> AddPatient(PatientDetails patient)
-        {
-            throw new NotImplementedException();
-        }
+        ArgumentNullException.ThrowIfNull(patient);
+        return _patientRepository.AddPatient(patient);
+    }
 
-        public Task<List<PatientDetails>> GetAllPatients()
-        {
-            throw new NotImplementedException();
-        }
+    public Task<List<PatientDetails>> GetAllPatients() => _patientRepository.GetAllPatients();
 
-        public Task<PatientDetails> GetPatientById(int id)
-        {
-            throw new NotImplementedException();
-        }
+    public Task<PatientDetails?> GetPatientById(int id) => _patientRepository.GetPatientById(id);
 
-        public Task<bool> UpdatePatient(PatientDetails patient)
-        {
-            throw new NotImplementedException();
-        }
+    public Task<bool> UpdatePatient(PatientDetails patient)
+    {
+        ArgumentNullException.ThrowIfNull(patient);
+        return _patientRepository.UpdatePatient(patient);
     }
 }

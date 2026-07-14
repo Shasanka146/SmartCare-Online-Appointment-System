@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using SmartCare.Shared.AppointmentData;
 
-namespace SmartCare.Business.AppointmentBusiness
+namespace SmartCare.Business.AppointmentBusiness;
+
+public interface IAppointmentBusiness
 {
-    public interface IappointmentBusiness
-    {
-    }
+    Task<bool> AddAppointment(AppointmentDetails appointment);
+    Task<IReadOnlyList<AppointmentDetails>> GetAllAppointments();
+    Task<IReadOnlyList<AppointmentDetails>> GetAppointmentsByPatient(int patientId);
+    Task<bool> UpdateStatus(int appointmentId, string status);
 }

@@ -1,0 +1,30 @@
+@model IReadOnlyList<SmartCare.Shared.AppointmentData.AppointmentDetails>
+
+@{
+    ViewData["Title"] = "Appointments";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Appointments</h1>
+    <a asp-action="Create" class="btn btn-primary">Book appointment</a>
+</div>
+
+@if (TempData["SuccessMessage"] is string message)
+{
+    <div class="alert alert-success">@message</div>
+}
+
+<table class="table table-striped">
+    <thead><tr><th>Date</th><th>Patient</th><th>Doctor</th><th>Status</th></tr></thead>
+    <tbody>
+    @foreach (var appointment in Model)
+    {
+        <tr>
+            <td>@appointment.AppointmentDate.ToString("g")</td>
+            <td>@appointment.PatientId</td>
+            <td>@appointment.DoctorId</td>
+            <td>@appointment.Status</td>
+        </tr>
+    }
+    </tbody>
+</table>

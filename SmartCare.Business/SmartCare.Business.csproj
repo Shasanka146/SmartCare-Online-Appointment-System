@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SmartCare.Repository\SmartCare.Repository.csproj" />
+    <ProjectReference Include="..\SmartCare.Shared\SmartCare.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

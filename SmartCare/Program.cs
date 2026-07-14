@@ -1,13 +1,4 @@
-using SmartCare.Business.AppointmentBusiness;
-using SmartCare.Business.DoctorBusiness;
-using SmartCare.Business.PatientBusiness;
-using SmartCare.Business.ClinicBusiness;
-using SmartCare.Repository.AppointmentRepository;
-using SmartCare.Repository.DoctorRepository;
-using SmartCare.Repository.PatientRepository;
-using SmartCare.Repository.ClinicRepository;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+using SmartCare.Business.DependencyInjection;
 
 public partial class Program
 {
@@ -18,19 +9,10 @@ public partial class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-        builder.Services.AddScoped<IappointmentBusiness, appointmentBusiness>();
-        builder.Services.AddScoped<IappointmentRepository, appointmentRepository>();
-
-        builder.Services.AddScoped<IdoctorBusiness, doctorBusiness>();
-        builder.Services.AddScoped<IdoctorRepository, doctorRepository>();
-
-        builder.Services.AddScoped<IpatientBusiness, patientBusiness>();
-        builder.Services.AddScoped<IPatientRepository, patientRepository>();
-
-        builder.Services.AddScoped<IclinicBusiness, clinicBusiness>();
-        builder.Services.AddScoped<IclinicRepository, clinicRepository>();
+        builder.Services.AddSmartCareServices(builder.Configuration);
 
         var app = builder.Build();
+        app.Services.EnsureSmartCareDatabase();
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
@@ -46,6 +28,7 @@ public partial class Program
         app.UseAuthorization();
 
         app.MapStaticAssets();
+        app.MapControllers();
 
         app.MapControllerRoute(
             name: "default",
