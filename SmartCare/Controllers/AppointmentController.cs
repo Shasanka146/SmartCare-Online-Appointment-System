@@ -8,12 +8,14 @@ public class AppointmentController : Controller
 {
     private readonly IAppointmentBusiness _appointmentBusiness;
 
+    public IAppointmentBusiness AppointmentBusiness => _appointmentBusiness;
+
     public AppointmentController(IAppointmentBusiness appointmentBusiness) =>
         _appointmentBusiness = appointmentBusiness;
 
     public async Task<IActionResult> Index()
     {
-        var appointments = await _appointmentBusiness.GetAllAppointments();
+        var appointments = await AppointmentBusiness.GetAllAppointments();
         return View(appointments);
     }
 
@@ -32,7 +34,7 @@ public class AppointmentController : Controller
 
         try
         {
-            if (!await _appointmentBusiness.AddAppointment(appointment))
+            if (!await AppointmentBusiness.AddAppointment(appointment))
             {
                 ModelState.AddModelError(string.Empty, "Appointment could not be saved.");
                 return View(appointment);

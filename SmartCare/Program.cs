@@ -1,4 +1,10 @@
+using SmartCare.Business.AppointmentBusiness;
+using SmartCare.Business.ClinicBusiness;
 using SmartCare.Business.DependencyInjection;
+using SmartCare.Business.PatientBusiness;
+using SmartCare.Repository.AppointmentRepository;
+using SmartCare.Repository.ClinicRepository;
+using SmartCare.Repository.PatientRepository;
 
 public partial class Program
 {
@@ -10,6 +16,15 @@ public partial class Program
         // Add services to the container.
         builder.Services.AddControllersWithViews();
         builder.Services.AddSmartCareServices(builder.Configuration);
+
+        builder.Services.AddScoped<IpatientBusiness, patientBusiness>();
+        builder.Services.AddScoped<IPatientRepository, patientRepository>();
+
+        builder.Services.AddScoped<IClinicBusiness, ClinicBusiness>();
+        builder.Services.AddScoped<IClinicRepository, ClinicRepository>();
+
+        builder.Services.AddScoped<IAppointmentBusiness, AppointmentBusiness>();
+        builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 
         var app = builder.Build();
         app.Services.EnsureSmartCareDatabase();
