@@ -9,4 +9,4 @@
 *.vsidx
 *.db
 *.log
-.buildverify/
+buildverify/
