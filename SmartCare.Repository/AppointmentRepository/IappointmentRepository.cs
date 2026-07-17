@@ -1,6 +1,6 @@
 using SmartCare.Shared.AppointmentData;
 
-namespace SmartCare.Repository.Appointment;
+namespace SmartCare.Repository.AppointmentRepository;
 
 public interface IAppointmentRepository
 {

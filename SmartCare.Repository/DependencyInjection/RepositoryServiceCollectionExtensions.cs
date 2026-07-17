@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SmartCare.Repository.Database;
 using SmartCare.Repository.PatientRepository;
-using SmartCare.Repository.Appointment;
+using SmartCare.Repository.AppointmentRepository;
 
 namespace SmartCare.Repository.DependencyInjection;
 
@@ -21,7 +21,6 @@ public static class RepositoryServiceCollectionExtensions
 
         return services;
     }
-
     public static void EnsureSmartCareDatabase(this IServiceProvider serviceProvider)
     {
         using var scope = serviceProvider.CreateScope();

@@ -1,10 +1,15 @@
-﻿using System;
+﻿using SmartCare.Shared.ClinicData;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace SmartCare.Repository.ClinicRepository
 {
-    public interface IclinicRepository
+    public interface IClinicRepository
     {
+        Task<bool> AddClinic(ClinicDetails clinic);
+        Task<List<ClinicDetails>> GetAllClinics();
+        Task<ClinicDetails> GetClinicById(int clinicId);
+        Task<bool> UpdateClinic(ClinicDetails clinic);
+        Task<bool> DeleteClinic(int clinicId);
     }
 }

@@ -2,7 +2,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using SmartCare.Shared.AppointmentData;
 
-namespace SmartCare.Repository.Appointment;
+namespace SmartCare.Repository.AppointmentRepository;
 
 public class AppointmentRepository : IAppointmentRepository
 {
