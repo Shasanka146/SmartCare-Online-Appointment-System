@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
+using SmartCare.Repository.Database;
+using SmartCare.Shared.DoctorData;
 
-namespace SmartCare.Repository.DoctorRepository
+namespace SmartCare.Repository.DoctorRepository;
+
+public class doctorRepository(ApplicationDbContext dbContext) : IdoctorRepository
 {
-    public class doctorRepository:IdoctorRepository
-    {
-    }
+    Task<List<DoctorDetails>> IdoctorRepository.GetAllDoctors() => dbContext.Doctors.AsNoTracking().ToListAsync();
+    public Task<List<DoctorDetails>> GetDoctorsByStatus(string status) => dbContext.Doctors.AsNoTracking().Where(doctor => doctor.Status == status).ToListAsync();
 }

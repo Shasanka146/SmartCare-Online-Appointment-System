@@ -7,5 +7,6 @@ public interface IAppointmentBusiness
     Task<bool> AddAppointment(AppointmentDetails appointment);
     Task<IReadOnlyList<AppointmentDetails>> GetAllAppointments();
     Task<IReadOnlyList<AppointmentDetails>> GetAppointmentsByPatient(int patientId);
+    Task<IReadOnlyList<AppointmentDetails>> GetAppointmentsByDate(DateTime date);
     Task<bool> UpdateStatus(int appointmentId, string status);
 }

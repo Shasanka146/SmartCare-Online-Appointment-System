@@ -1,10 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
 
-namespace SmartCare.Shared.DoctorData
+namespace SmartCare.Shared.DoctorData;
+
+public class DoctorDetails
 {
-    public class DoctorDetails
-    {
-    }
+    [Key]
+    public int DoctorId { get; set; }
+
+    [Required, StringLength(100)]
+    public string Name { get; set; } = string.Empty;
+
+    [Required, StringLength(20)]
+    public string Status { get; set; } = "Available";
 }

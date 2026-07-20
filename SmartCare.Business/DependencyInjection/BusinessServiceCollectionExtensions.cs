@@ -20,7 +20,7 @@ public static class BusinessServiceCollectionExtensions
         services.AddScoped<IAppointmentBusiness, AppointmentService>();
         services.AddScoped<IdoctorBusiness, doctorBusiness>();
         services.AddScoped<IpatientBusiness, patientBusiness>();
-        services.AddScoped<IClinicBusiness, Clinic>();
+        services.AddScoped<IClinicBusiness, global::SmartCare.Business.ClinicBusiness.ClinicBusiness>();
 
         return services;
     }

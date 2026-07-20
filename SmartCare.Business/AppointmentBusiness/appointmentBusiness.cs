@@ -1,4 +1,4 @@
-using SmartCare.Repository.Appointment;
+using SmartCare.Repository.AppointmentRepository;
 using SmartCare.Shared.AppointmentData;
 
 namespace SmartCare.Business.AppointmentBusiness;
@@ -25,6 +25,11 @@ public class AppointmentBusiness : IAppointmentBusiness
         if (patientId <= 0) throw new ArgumentOutOfRangeException(nameof(patientId));
         return _appointmentRepository.GetAppointmentsByPatient(patientId);
     }
+
+    public async Task<IReadOnlyList<AppointmentDetails>> GetAppointmentsByDate(DateTime date) =>
+        (await _appointmentRepository.GetAllAppointments())
+            .Where(appointment => appointment.AppointmentDate.Date == date.Date)
+            .ToList();
 
     public Task<bool> UpdateStatus(int appointmentId, string status)
     {

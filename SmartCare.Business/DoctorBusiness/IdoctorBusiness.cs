@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using SmartCare.Shared.DoctorData;
 
-namespace SmartCare.Business.DoctorBusiness
+namespace SmartCare.Business.DoctorBusiness;
+
+public interface IdoctorBusiness
 {
-    public interface IdoctorBusiness
-    {
-    }
+    Task<List<DoctorDetails>> GetAllDoctors();
+    Task<List<DoctorDetails>> GetDoctorsByStatus(string status);
 }

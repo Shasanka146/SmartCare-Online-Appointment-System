@@ -24,4 +24,6 @@ public class PatientDetails
 
     [Required, StringLength(100)]
     public string Address { get; set; } = string.Empty;
+
+    public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 }

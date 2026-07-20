@@ -1,0 +1,127 @@
+:root {
+    --green-700: #1f8b68;
+    --green-600: #2fa574;
+    --green-500: #4fc08d;
+    --green-100: #ebf9f1;
+    --ink-900: #16352b;
+    --ink-700: #35564a;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f4fff9 0%, #e8f8ef 100%);
+    color: var(--ink-900);
+}
+
+.page-shell {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(120deg, var(--green-700), var(--green-500));
+    color: var(--white);
+    border-radius: 24px;
+    padding: 28px 32px;
+    box-shadow: 0 18px 45px rgba(31, 139, 104, 0.2);
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.8rem;
+    opacity: 0.85;
+    margin: 0 0 10px;
+}
+
+.hero h1 {
+    margin: 0 0 10px;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.hero p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.95;
+}
+
+.hero-badge {
+    min-width: 108px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.16);
+    padding: 14px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    backdrop-filter: blur(6px);
+}
+
+.clinic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.clinic-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--white);
+    border: 1px solid rgba(31, 139, 104, 0.12);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 12px 30px rgba(22, 53, 43, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.clinic-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(31, 139, 104, 0.16);
+    border-color: rgba(31, 139, 104, 0.35);
+}
+
+.icon-wrap {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: var(--green-100);
+    color: var(--green-700);
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+}
+
+.clinic-card h2 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+    color: var(--ink-900);
+}
+
+.clinic-card p {
+    margin: 0;
+    color: var(--ink-700);
+    line-height: 1.5;
+}
+
+@media (max-width: 680px) {
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-shell {
+        padding: 20px 14px 36px;
+    }
+}

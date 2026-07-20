@@ -24,4 +24,9 @@ public class patientBusiness : IpatientBusiness
         ArgumentNullException.ThrowIfNull(patient);
         return _patientRepository.UpdatePatient(patient);
     }
+
+    public async Task<List<PatientDetails>> GetNewPatients(DateTime date) =>
+        (await _patientRepository.GetAllPatients())
+            .Where(patient => patient.CreatedDate.Date == date.Date)
+            .ToList();
 }
