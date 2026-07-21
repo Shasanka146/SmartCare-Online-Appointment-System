@@ -1,13 +1,33 @@
 using Microsoft.AspNetCore.Mvc;
 using SmartCare.Models;
+using SmartCare.Business.ClinicBusiness;
+using SmartCare.Business.DoctorBusiness;
+using SmartCare.Business.PatientBusiness;
 using System.Diagnostics;
 
 namespace SmartCare.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IClinicBusiness _clinicBusiness;
+        private readonly IdoctorBusiness _doctorBusiness;
+        private readonly IpatientBusiness _patientBusiness;
+
+        public HomeController(
+            IClinicBusiness clinicBusiness,
+            IdoctorBusiness doctorBusiness,
+            IpatientBusiness patientBusiness)
         {
+            _clinicBusiness = clinicBusiness;
+            _doctorBusiness = doctorBusiness;
+            _patientBusiness = patientBusiness;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            ViewData["TotalClinics"] = await _clinicBusiness.GetClinicCount();
+            ViewData["TotalDoctors"] = await _doctorBusiness.GetDoctorCount();
+            ViewData["TotalPatients"] = await _patientBusiness.GetPatientCount();
             return View();
         }
 

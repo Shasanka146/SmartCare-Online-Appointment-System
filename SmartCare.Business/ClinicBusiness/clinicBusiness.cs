@@ -31,13 +31,15 @@ namespace SmartCare.Business.ClinicBusiness
             return await _repository.GetAllClinics();
         }
 
-        public async Task<ClinicDetails> GetClinicById(int clinicId)
+        public async Task<ClinicDetails?> GetClinicById(int clinicId)
         {
             if (clinicId <= 0)
                 throw new Exception("Invalid Clinic Id");
 
             return await _repository.GetClinicById(clinicId);
         }
+
+        public Task<int> GetClinicCount() => _repository.GetClinicCount();
 
         public async Task<bool> UpdateClinic(ClinicDetails clinic)
         {

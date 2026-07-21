@@ -11,5 +11,6 @@ namespace SmartCare.Business.PatientBusiness
         Task<List<PatientDetails>> GetAllPatients();
         Task<bool> UpdatePatient(PatientDetails patient);
         Task<List<PatientDetails>> GetNewPatients(DateTime date);
+        Task<int> GetPatientCount();
     }
 }

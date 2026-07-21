@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using SmartCare.Business.AppointmentBusiness;
 using SmartCare.Business.PatientBusiness;
+using SmartCare.Business.DoctorBusiness;
+using SmartCare.Business.ClinicBusiness;
+using SmartCare.Models;
 
 namespace SmartCare.Controllers;
 
@@ -10,31 +13,39 @@ public class DashboardController : ControllerBase
 {
     private readonly IpatientBusiness _patientBusiness;
     private readonly IAppointmentBusiness _appointmentBusiness;
+    private readonly IdoctorBusiness _doctorBusiness;
+    private readonly IClinicBusiness _clinicBusiness;
 
     public DashboardController(
         IpatientBusiness patientBusiness,
-        IAppointmentBusiness appointmentBusiness)
+        IAppointmentBusiness appointmentBusiness,
+        IdoctorBusiness doctorBusiness,
+        IClinicBusiness clinicBusiness)
     {
         _patientBusiness = patientBusiness;
         _appointmentBusiness = appointmentBusiness;
+        _doctorBusiness = doctorBusiness;
+        _clinicBusiness = clinicBusiness;
     }
 
     [HttpGet("stats")]
-    public async Task<IActionResult> GetStats()
+    public async Task<ActionResult<DashboardStats>> GetStats()
     {
-        var patients = await _patientBusiness.GetAllPatients();
-        var appointments = await _appointmentBusiness.GetAllAppointments();
+        var totalPatients = await _patientBusiness.GetPatientCount();
+        var totalDoctors = await _doctorBusiness.GetDoctorCount();
+        var totalClinics = await _clinicBusiness.GetClinicCount();
+        var todayAppointments = await _appointmentBusiness.GetTodayAppointmentCount(DateTime.Today);
+        var availableDoctors = await _doctorBusiness.GetDoctorCountByStatus("Available");
+        var busyDoctors = await _doctorBusiness.GetDoctorCountByStatus("Busy");
 
-        return Ok(new
+        return Ok(new DashboardStats
         {
-            totalDoctors = 0,
-            totalPatients = patients.Count,
-            todayAppointments = appointments.Count(appointment =>
-                appointment.AppointmentDate.Date == DateTime.Today),
-            availableDoctors = 0,
-            busyDoctors = 0,
-            // PatientDetails currently has no CreatedDate property.
-            newPatients = 0
+            TotalDoctors = totalDoctors,
+            TotalPatients = totalPatients,
+            TotalClinics = totalClinics,
+            TodayAppointments = todayAppointments,
+            AvailableDoctors = availableDoctors,
+            BusyDoctors = busyDoctors
         });
     }
 }

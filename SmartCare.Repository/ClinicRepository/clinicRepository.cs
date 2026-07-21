@@ -1,5 +1,8 @@
 ﻿using Microsoft.Data.Sqlite;
-using SmartCare.Repository.ClinicRepository;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using SmartCare.Repository.Database;
+using SmartCare.Repository.DependencyInjection;
 using SmartCare.Shared.ClinicData;
 using System;
 using System.Collections.Generic;
@@ -11,9 +14,13 @@ namespace SmartCare.Repository.ClinicRepository
     {
         private readonly string _connectionString;
 
-        public ClinicRepository(string connectionString)
+        private readonly ILogger<ClinicRepository> _logger;
+
+        public ClinicRepository(IConfiguration configuration, ILogger<ClinicRepository> logger)
         {
-            _connectionString = connectionString;
+            ArgumentNullException.ThrowIfNull(configuration);
+            _connectionString = SqliteConnectionFactory.GetConnectionString(configuration);
+            _logger = logger;
         }
 
         public async Task<bool> AddClinic(ClinicDetails clinic)
@@ -61,7 +68,7 @@ namespace SmartCare.Repository.ClinicRepository
             return list;
         }
 
-        public async Task<ClinicDetails> GetClinicById(int clinicId)
+        public async Task<ClinicDetails?> GetClinicById(int clinicId)
         {
             using var con = new SqliteConnection(_connectionString);
 
@@ -87,6 +94,22 @@ namespace SmartCare.Repository.ClinicRepository
             }
 
             return null;
+        }
+
+        public async Task<int> GetClinicCount()
+        {
+            try
+            {
+                using var con = new SqliteConnection(_connectionString);
+                using var cmd = new SqliteCommand("SELECT COUNT(*) FROM Clinics", con);
+                await con.OpenAsync();
+                return Convert.ToInt32(await cmd.ExecuteScalarAsync());
+            }
+            catch (SqliteException exception)
+            {
+                _logger.LogError(exception, "Unable to count clinics.");
+                return 0;
+            }
         }
 
         public async Task<bool> UpdateClinic(ClinicDetails clinic)

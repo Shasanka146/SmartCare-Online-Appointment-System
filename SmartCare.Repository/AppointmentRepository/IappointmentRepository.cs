@@ -8,4 +8,5 @@ public interface IAppointmentRepository
     Task<IReadOnlyList<AppointmentDetails>> GetAllAppointments();
     Task<IReadOnlyList<AppointmentDetails>> GetAppointmentsByPatient(int patientId);
     Task<bool> UpdateStatus(int appointmentId, string status);
+    Task<int> GetTodayAppointmentCount(DateTime date);
 }

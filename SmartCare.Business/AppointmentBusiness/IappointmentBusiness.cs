@@ -9,4 +9,5 @@ public interface IAppointmentBusiness
     Task<IReadOnlyList<AppointmentDetails>> GetAppointmentsByPatient(int patientId);
     Task<IReadOnlyList<AppointmentDetails>> GetAppointmentsByDate(DateTime date);
     Task<bool> UpdateStatus(int appointmentId, string status);
+    Task<int> GetTodayAppointmentCount(DateTime date);
 }

@@ -19,6 +19,8 @@ public class patientBusiness : IpatientBusiness
 
     public Task<PatientDetails?> GetPatientById(int id) => _patientRepository.GetPatientById(id);
 
+    public Task<int> GetPatientCount() => _patientRepository.GetPatientCount();
+
     public Task<bool> UpdatePatient(PatientDetails patient)
     {
         ArgumentNullException.ThrowIfNull(patient);

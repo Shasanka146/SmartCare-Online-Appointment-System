@@ -38,6 +38,8 @@ public class AppointmentBusiness : IAppointmentBusiness
         return _appointmentRepository.UpdateStatus(appointmentId, status.Trim());
     }
 
+    public Task<int> GetTodayAppointmentCount(DateTime date) => _appointmentRepository.GetTodayAppointmentCount(date);
+
     private static void ValidateAppointment(AppointmentDetails appointment)
     {
         if (appointment.PatientId <= 0) throw new ArgumentException("PatientId is required.");

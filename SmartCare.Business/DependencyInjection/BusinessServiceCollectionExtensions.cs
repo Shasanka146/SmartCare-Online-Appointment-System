@@ -18,12 +18,12 @@ public static class BusinessServiceCollectionExtensions
         services.AddSmartCareRepository(configuration);
 
         services.AddScoped<IAppointmentBusiness, AppointmentService>();
-        services.AddScoped<IdoctorBusiness, doctorBusiness>();
         services.AddScoped<IpatientBusiness, patientBusiness>();
+        services.AddScoped<IdoctorBusiness, doctorBusiness>();
         services.AddScoped<IClinicBusiness, global::SmartCare.Business.ClinicBusiness.ClinicBusiness>();
 
         return services;
-    }
+    }  
 
     public static void EnsureSmartCareDatabase(this IServiceProvider serviceProvider) =>
         RepositoryServiceCollectionExtensions.EnsureSmartCareDatabase(serviceProvider);

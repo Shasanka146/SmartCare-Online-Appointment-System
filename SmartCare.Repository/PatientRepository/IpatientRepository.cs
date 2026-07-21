@@ -8,5 +8,6 @@ namespace SmartCare.Repository.PatientRepository
         Task<PatientDetails?> GetPatientById(int id);
         Task<List<PatientDetails>> GetAllPatients();
         Task<bool> UpdatePatient(PatientDetails patient);
+        Task<int> GetPatientCount();
     }
 }

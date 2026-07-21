@@ -1,10 +1,4 @@
-using SmartCare.Business.AppointmentBusiness;
-using SmartCare.Business.ClinicBusiness;
 using SmartCare.Business.DependencyInjection;
-using SmartCare.Business.PatientBusiness;
-using SmartCare.Repository.AppointmentRepository;
-using SmartCare.Repository.ClinicRepository;
-using SmartCare.Repository.PatientRepository;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.DataProtection;
 
@@ -23,16 +17,6 @@ public partial class Program
         // Avoid Windows-profile key access in this shared development workspace.
         builder.Services.AddSingleton<IDataProtectionProvider, EphemeralDataProtectionProvider>();
         builder.Services.AddSmartCareServices(builder.Configuration);
-
-        builder.Services.AddScoped<IpatientBusiness, patientBusiness>();
-        builder.Services.AddScoped<IPatientRepository, patientRepository>();
-
-        builder.Services.AddScoped<IClinicBusiness, global::SmartCare.Business.ClinicBusiness.ClinicBusiness>();
-        builder.Services.AddScoped<IClinicRepository>(_ => new global::SmartCare.Repository.ClinicRepository.ClinicRepository(
-            builder.Configuration.GetConnectionString("ApplicationDbContext")!));
-
-        builder.Services.AddScoped<IAppointmentBusiness, AppointmentBusiness>();
-        builder.Services.AddScoped<IAppointmentRepository, global::SmartCare.Repository.AppointmentRepository.IAppointmentRepository>();
 
         var app = builder.Build();
         app.Services.EnsureSmartCareDatabase();
