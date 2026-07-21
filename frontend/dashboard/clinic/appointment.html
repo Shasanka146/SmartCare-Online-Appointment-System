@@ -1,5 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Clinic Management | SmartCare</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../assets/css/clinic/appointment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity=""
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Sidebar Container -->
+    <div id="sidebar-container"></div>
+     <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar"></div>
+<main class="main-content" id="main-content">
+    <section class="dashboard-main">
+        <div class="stats-grid">
+            <article class="dashboard-card stat-card">
+                <h3>Today's Appointments</h3>
+                <strong>24</strong>
+                <p>Scheduled visits across clinics</p>
+            </article>
+            <article class="dashboard-card stat-card">
+                <h3>Pending Payments</h3>
+                <strong>6</strong>
+                <p>Awaiting confirmation</p>
+            </article>
+            <article class="dashboard-card stat-card">
+                <h3>Completed</h3>
+                <strong>18</strong>
+                <p>Successful appointments</p>
+            </article>
+        </div>
+        <article class="dashboard-card appointment-panel">
+            <div class="appointment-header">
+                <div>
+                    <p class="eyebrow">Clinic Operations</p>
+                    <h3>Appointment Management</h3>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="appointmentSearch" placeholder="Search patient or doctor..." />
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table class="data-table appointment-table">
+                    <thead>
+                        <tr>
+                            <th>Appointment ID</th>
+                            <th>Patient Name</th>
+                            <th>Doctor</th>
+                            <th>Date &amp; Time</th>
+                            <th>Payment Status</th>                            
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentTableBody">
+                        <p>..........loding......</p>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+    </section>
+</main>
+
+    <script src="../../assets/js/sidePanel/clinic.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -35,94 +124,7 @@
                 <li><a href="contact.html">Support</a></li>
             </ul>
         </aside>
-        <section class="dashboard-main">
-            <div class="stats-grid">
-                <article class="dashboard-card stat-card">
-                    <h3>Today's Appointments</h3>
-                    <strong>24</strong>
-                    <p>Scheduled visits across clinics</p>
-                </article>
-                <article class="dashboard-card stat-card">
-                    <h3>Pending Payments</h3>
-                    <strong>6</strong>
-                    <p>Awaiting confirmation</p>
-                </article>
-                <article class="dashboard-card stat-card">
-                    <h3>Completed</h3>
-                    <strong>18</strong>
-                    <p>Successful appointments</p>
-                </article>
-            </div>
-
-            <article class="dashboard-card appointment-panel">
-                <div class="appointment-header">
-                    <div>
-                        <p class="eyebrow">Clinic Operations</p>
-                        <h3>Appointment Management</h3>
-                    </div>
-                    <div class="search-box">
-                        <input type="text" id="appointmentSearch" placeholder="Search patient or doctor..." />
-                    </div>
-                </div>
-
-                <div class="table-wrap">
-                    <table class="data-table appointment-table">
-                        <thead>
-                            <tr>
-                                <th>Appointment ID</th>
-                                <th>Patient Name</th>
-                                <th>Doctor</th>
-                                <th>Date &amp; Time</th>
-                                <th>Payment Status</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody id="appointmentTableBody">
-                            <tr>
-                                <td>#APT1024</td>
-                                <td>Sarah Kim</td>
-                                <td>Dr. Ayesha Sharma</td>
-                                <td>15 Jul 2026 • 10:30 AM</td>
-                                <td><span class="status paid">Paid</span></td>
-                                <td>
-                                   
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#APT1025</td>
-                                <td>Daniel Cruz</td>
-                                <td>Dr. Omar Hassan</td>
-                                <td>15 Jul 2026 • 11:45 AM</td>
-                                <td><span class="status pending">Pending</span></td>
-                                <td>
-                                   
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#APT1026</td>
-                                <td>Maria Lopez</td>
-                                <td>Dr. Nia Bennett</td>
-                                <td>16 Jul 2026 • 09:00 AM</td>
-                                <td><span class="status paid">Paid</span></td>
-                                <td>
-                                   
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#APT1027</td>
-                                <td>James Patel</td>
-                                <td>Dr. Lina Gomez</td>
-                                <td>16 Jul 2026 • 01:15 PM</td>
-                                <td><span class="status pending">Pending</span></td>
-                                <td>
-                                   
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
-        </section>
+        
     </main>
 
     <footer class="footer">
@@ -163,4 +165,4 @@
      <script src="../../assets/js/sidePanel/clinic.js"></script>
 </body>
 
-</html>
+</html> -->
